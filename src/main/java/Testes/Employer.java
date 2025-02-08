@@ -1,5 +1,5 @@
 package Testes;
-public class Employeer {
+public class Employer {
     private String nome;
     private double grossSalary;
     private double tax;

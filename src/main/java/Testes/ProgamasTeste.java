@@ -10,7 +10,7 @@ public class ProgamasTeste {
         double salary;
         int id;
         String name;
-       List<Employer> employers = new ArrayList<>();
+       List<Employee> employees = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         System.out.println("How many employees will be registered? ");
         int n = sc.nextInt();        
@@ -18,7 +18,7 @@ public class ProgamasTeste {
             System.out.println("Employee #" + i + ":");
             System.out.print("Id: ");
             id = sc.nextInt();
-            while(hasId(employers, id)){
+            while(hasId(employees, id)){
                 System.out.println("Id Already taken! Try again: ");
                 id = sc.nextInt();
             }
@@ -29,24 +29,24 @@ public class ProgamasTeste {
             System.out.print("Salary: ");
             salary = sc.nextDouble();
             System.out.println("");
-            Employer e = new Employer(id, name, salary);
-            employers.add(e);
+            Employee e = new Employee(id, name, salary);
+            employees.add(e);
         }
         System.out.print("Enter the employee id that will have salary increase: ");
         int resultId = sc.nextInt();
-        List<Employer> result = employers.stream().filter(x -> x.getId() == resultId).collect(Collectors.toList());
+        List<Employee> result = employees.stream().filter(x -> x.getId() == resultId).collect(Collectors.toList());
         if (result.isEmpty()){
             System.out.println("This id does not exist!");
         }else{
         System.out.print("Enter the percentage: ");
         double percentage = sc.nextDouble();
-        for (Employer x : result){
+        for (Employee x : result){
             x.increaseSalary(percentage);
         }
         }
         System.out.println("");
         System.out.println("List of employees: ");
-        for (Employer x: employers){
+        for (Employee x: employers){
             System.out.println(x.getId() + ", " + x.getName() + ", " + x.getSalary() );
         }
         sc.close();
@@ -54,7 +54,7 @@ public class ProgamasTeste {
     
     
     }
-    public static boolean hasId(List<Employer> list, int id){
+    public static boolean hasId(List<Employee> list, int id){
             Employer emp = list.stream().filter(x -> x.getId() == id).findFirst().orElse(null);
             return emp != null;
         }

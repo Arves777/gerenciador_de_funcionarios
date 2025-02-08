@@ -46,7 +46,7 @@ public class ProgamasTeste {
         }
         System.out.println("");
         System.out.println("List of employees: ");
-        for (Employee x: employers){
+        for (Employee x: employees){
             System.out.println(x.getId() + ", " + x.getName() + ", " + x.getSalary() );
         }
         sc.close();
